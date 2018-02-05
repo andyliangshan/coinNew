@@ -1,0 +1,355 @@
+@import "reset.css";
+
+.detailInfo {
+    clear: both;
+    overflow: hidden;
+    padding: 15px;
+    position: relative;
+    background: #1e212a;
+}
+
+.scondetailInfo {
+    padding-bottom: 0;
+}
+
+.detailInfo .detailInfo-top {
+    overflow: hidden;
+    margin: 0;
+}
+
+.detailInfo .detailInfo-top-logo {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+}
+
+.detailInfo .detailInfo-top-logo img {
+    width: 100%;
+}
+
+.detailInfo .detailInfo-top-coin, .detailInfo .detailInfo-top-commit {
+    padding: 0;
+    margin-left: 10px;
+}
+
+.detailInfo .detailInfo-top-coin span, .detailInfo .detailInfo-top-commit span {
+    display: inline-block;
+    width: 100%;
+    color: #999;
+    font-size: 12px;
+}
+
+.detailInfo .detailInfo-top-coin span.fontWhite, .detailInfo .detailInfo-top-commit span.fontWhite {
+    color: #fff;
+    font-weight: bolder;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.detailInfo .detailInfo-top-more {
+    padding: 0;
+    text-align: right;
+    line-height: 34px;
+}
+
+.detailInfo .detailInfo-top-more a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    color: #f0b90b;
+}
+
+.detailInfo .secondDetail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.detailInfo .secondDetail a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.detailInfo .detailInfo-bot {
+    clear: both;
+    overflow: hidden;
+    padding-top: 15px;
+    margin: 0;
+}
+
+.detailInfo .detailInfo-bot>div {
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.detailInfo .detailInfo-bot>div span {
+    display: inline-block;
+    font-size: 13px;
+}
+
+.ICO-time span, .ICO-average span, .ICO-storeTime span, .ICO-publishPrice span {
+    color: #fff;
+}
+
+.ICO-time span.fontWhite, .ICO-average span.fontWhite, .ICO-storeTime span.fontWhite, .ICO-publishPrice span.fontWhite {
+    color: #999;
+    width: 40%;
+}
+
+.ICO-tag {
+    clear: both;
+    overflow: hidden;
+}
+
+.ICO-tag span {
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid #f0b90b;
+    color: #f0b90b;
+    padding: 5px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.obc {
+    clear: none;
+}
+
+.leg {
+    width: 42px;
+}
+
+.detailInfo .botdetal {
+    padding-top: 10px;
+}
+
+.listcont {
+    clear: both;
+    overflow: hidden;
+}
+
+.listcont table {
+    border-collapse: collapse;
+    width: 100%;
+    border: none;
+}
+
+.listcont table tr th {
+    border: none;
+    background: #282b36;
+    padding: 8px 0;
+    font-size: 13px;
+    color: #999;
+}
+
+.listcont table tr td {
+    border: none;
+}
+
+.ownlist .tableHeader {
+    padding: 8px 15px;
+    text-align: left;
+    background: #282b36;
+    margin: 0;
+}
+
+.ownlist .tableHeader>div {
+    color: #999;
+    font-size: 13px;
+    padding: 0;
+}
+
+.ownlist .tableHeader .col2 {
+    color: #999;
+}
+
+.ownlist .tableHeader .col1 em {
+    font-style: normal;
+    color: #f0b90b;
+}
+
+.ownlist .tableHeader .col1 span {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.ownlist .tableHeader .col1 span.downbtn {
+    background: url(/public/images/downBtn.png) no-repeat;
+    background-size: contain;
+    width: 8px;
+    height: 11px;
+}
+
+.ownlist .tableHeader .col1 span.upbtn {
+    background: url(/public/images/upBtn.png) no-repeat;
+    background-size: contain;
+    width: 8px;
+    height: 11px;
+}
+
+.ownlist .tableHeader .col3 {
+    text-align: right;
+}
+
+.rowlist {
+    clear: both;
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+.rowlist .rowrankData {
+    padding: 10px 0;
+    overflow: hidden;
+    border-bottom: 1px solid #20272c;
+}
+
+.rowlist .rowrankData .coinDesc .coinDesc-co {
+    font-size: 12px;
+    color: #999;
+}
+
+.rowlist .rowrankData .coinDesc .coinDesc-co span {
+    color: #fff;
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.rowlist .rowrankData .coinDesc .coinDesc-de {
+    clear: both;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.rowlist .rowrankData .coinDesc .coinDesc-de span {
+    display: inline-block;
+    color: #999;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.rowlist .rowrankData .coinPrice {
+    padding: 10px 0;
+    color: #fff;
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.rowlist .rowrankData .coinMarketPrice span {
+    display: block;
+    padding: 10px 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.rowlist .rowrankData .red span {
+    background: #9a1e1e;
+}
+
+.rowlist .rowrankData .blue span {
+    background: #4d6d0f;
+}
+
+.secondInfoDetail {
+    clear: both;
+    overflow: hidden;
+    background: #14171f;
+    padding-bottom: 40px;
+}
+
+.secondInfoDetail .secondInfoDetail-box {
+    padding: 0 15px;
+    border-bottom: 1px solid #20272c;
+}
+
+.secondInfoDetail-coin {
+    margin: 0;
+    padding: 15px 0 0;
+    border-bottom: 1px solid #20272c;
+}
+
+.secondInfoDetail-coin>div {
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.secondInfoDetail-coin>div span {
+    font-size: 15px;
+    color: #999;
+    display: inline-block;
+}
+
+.secondInfoDetail-coin>div span.fontwhite {
+    margin-left: 10px;
+    color: #fff;
+}
+
+.secondInfoDetail-coin>div span.fontwhites {
+    color: #fff;
+}
+
+.program-instru {
+    clear: both;
+    overflow: hidden;
+    padding: 10px 15px 15px;
+    border-bottom: 1px solid #20272c;
+}
+
+.program-instru h1 {
+    font-size: 14px;
+    color: #fff;
+    font-weight: bolder;
+    margin: 0;
+}
+
+.program-instru .program-instru-desc {
+    clear: both;
+    overflow: hidden;
+    padding-top: 15px;
+    line-height: 24px;
+    color: #999;
+    font-size: 14px;
+}
+
+.program-instru .program-instru-desc span {
+    display: inline-block;
+    color: #fff;
+}
+
+.links {
+    clear: both;
+    overflow: hidden;
+    padding: 15px 15px 0;
+}
+
+.links p {
+    clear: both;
+    overflow: hidden;
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+.links p span {
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    padding: 0;
+    width: 100px;
+}
+
+.links p a {
+    display: inline-block;
+    padding: 0;
+    color: #999;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+

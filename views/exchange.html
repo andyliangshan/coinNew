@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title><%= title%></title>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/exchange.css' />
+</head>
+<body>
+<div class="app">
+    <div class="coinType">
+        <div class="coinTypeNumber">
+            <%var coinType = coinType.pagedata%>
+            <%for(var i = 0, len = coinType.length; i < len; i++){%>
+            <a href="javascript:void(0)" class="coinaa <%if(i === 0){%>active<%}%>"><%= coinType[i].bourse_name%></a>
+            <%}%>
+        </div>
+        <div class="navheader-r"><a href="javascript:void(0)" data-toggle="modal" data-target="#searchFrom"><img src="/public/images/searchBtn.png" alt="" /></a></div>
+    </div>
+    <div class="listcont">
+        <div class="ownlist">
+            <div class="tableHeader row">
+                <div class="col-xs-5 col1">交易对/<em>成交量</em><span class="upbtn"></span></div>
+                <div class="col-xs-3 col2">最新价</div>
+                <div class="col-xs-4 col3">涨跌</div>
+            </div>
+            <div class="rowlist">
+                <div class="rowrankData row" data-toggle="modal" data-target="#checkprogram">
+                    <div class="coinDesc col-xs-5">
+                        <div class="coinDesc-co"><span>BTC</span>/USDT</div>
+                        <div class="coinDesc-de"><span>币安</span><span>成交量2,567</span></div>
+                    </div>
+                    <div class="coinPrice col-xs-3">¥150000</div>
+                    <div class="coinMarketPrice red col-xs-4"><span>+1.98%</span></div>
+                </div>
+                <div class="rowrankData row">
+                    <div class="coinDesc col-xs-5">
+                        <div class="coinDesc-co"><span>BTC</span>/USDT</div>
+                        <div class="coinDesc-de"><span>币安</span><span>成交量2,567</span></div>
+                    </div>
+                    <div class="coinPrice col-xs-3">¥75000</div>
+                    <div class="coinMarketPrice blue col-xs-4"><span>-11.05%</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('footer.html', {page: 'exchange'})%>
+    <!--搜索 modal-->
+    <%- include('searchFrom.html')%>
+    <!--交易对增删改查 modal-->
+    <%- include('exchangeProgram.html')%>
+    <script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+</div>
+</body>
+</html>

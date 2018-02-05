@@ -1,0 +1,242 @@
+@import "reset.css";
+
+.app {
+    height:100%;
+}
+
+.pelprofile {
+    padding: 30px 15px;
+    background: #1e212a;
+    overflow: hidden;
+    text-align: center;
+}
+
+.pelprofile .profile-pic {
+    width: 100%;
+}
+
+.pelprofile .profile-pic img {
+    vertical-align: middle;
+    width: 53px;
+    height: 53px;
+}
+
+.pelprofile .pel-phone {
+    clear: both;
+    overflow: hidden;
+    font-size: 16px;
+    padding-top: 15px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cont {
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+}
+
+.cont>div {
+    background: #191c25;
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 5px;
+    padding: 15px;
+}
+
+.cont-message {
+    position: relative;
+}
+
+.cont-message a {
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+}
+
+.cont-message a i {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+}
+
+.cont-message a i img {
+    width: 100%;
+}
+
+.cont-message a span {
+    display: inline-block;
+}
+
+.cont-message a em {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    width: 7px;
+    height: 12px;
+    margin-top: -6px;
+}
+
+.cont-message a em img {
+    width: 100%;
+}
+
+.cont-friend i {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    vertical-align: text-bottom;
+}
+
+.cont-friend i img {
+    width: 100%;
+}
+
+.cont-friend span {
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+}
+
+.cont-friend em {
+    display: inline-block;
+    margin-left: 10%;
+    color: #999;
+    font-size: 14px;
+}
+
+.logout {
+    clear: both;
+    overflow: hidden;
+    padding: 80px 15px;
+    display: none;
+}
+
+.logout a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #fff;
+    background: #c3970c;
+}
+
+.backto {
+    background: #1e212a;
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.backto .backtoPage {
+    display: inline-block;
+    width: 9px;
+    height: 17px;
+    float: left;
+    background: url(/public/images/backToBtn.png) no-repeat;
+    background-size: contain;
+    padding-left: 20px;
+}
+
+.suggestbox {
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    background: #14171f;
+}
+
+.suggestbox h1 {
+    padding: 15px;
+    border-bottom: 1px solid #20272c;
+    color: #999;
+    font-size: 14px;
+    margin: 0;
+}
+
+.suggestFrom {
+    clear: both;
+    overflow: hidden;
+}
+
+.fillsuggest {
+    margin: 0 15px;
+    padding: 15px 10px;
+    border-bottom: 1px solid #20272c;
+    overflow: hidden;
+}
+
+.fillsuggest textarea {
+    min-height: 120px;
+    resize: none;
+    background: none;
+    width: 100%;
+    border: none;
+}
+
+.fillsuggest textarea:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+.form-input {
+    clear: both;
+    overflow: hidden;
+    padding: 15px 0 0;
+    margin: 0 15px;
+    line-height: 21px;
+}
+
+.form-input label {
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+.form-input input {
+    float: left;
+    border: none;
+    border-bottom: 1px solid #20272c;
+    background: none;
+    font-size: 14px;
+    padding: 0 0 13px 0;
+}
+
+.form-input input:focus {
+    outline-offset: 0;
+    outline: none;
+}
+
+.submitform {
+    clear: both;
+    overflow: hidden;
+    padding: 0 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.submitform a {
+    display: block;
+    width: 100%;
+    background: #c3970c;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px 0;
+}
+
+
+
+
+
+
+

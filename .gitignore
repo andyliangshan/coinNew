@@ -1,0 +1,10 @@
+build
+database.sqlite
+node_modules
+bower_components
+ncp-debug.log
+npm-debug.log
+.idea
+public/libs
+.DS_Store
+npm-debug.log*

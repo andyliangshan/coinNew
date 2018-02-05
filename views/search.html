@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title><%= title%></title>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/search.css' />
+</head>
+<body>
+<div class="app">
+    <div class="resultSearch">
+        <form class="resultList" id="resultList">
+            <div class="search-key row">
+                <div class="inputkey col-xs-10">
+                    <input name="inputkey" type="text" placeholder="" class="inputKeyName" id="inputKeyName"/>
+                    <span><img src="/public/images/searchBtnCancel.png" alt=""/></span>
+                </div>
+                <div class="cancelSearch col-xs-2">取消</div>
+            </div>
+            <div class="listCoin">
+                <div class="tableHeader row">
+                    <div class="col-xs-5 col1">交易对/成交量</div>
+                    <div class="col-xs-3 col2">最新价</div>
+                    <div class="col-xs-4 col3">涨跌</div>
+                </div>
+                <div class="rowlist">
+                    <div class="rowrankData row">
+                        <div class="coinDesc col-xs-5">
+                            <div class="coinDesc-co"><span>BTC</span>/USDT</div>
+                            <div class="coinDesc-de"><span>币安</span><span>成交量2,567</span></div>
+                        </div>
+                        <div class="coinPrice col-xs-3">¥150000</div>
+                        <div class="coinMarketPrice red col-xs-4"><span>¥179亿</span></div>
+                    </div>
+                    <div class="rowrankData row">
+                        <div class="coinDesc col-xs-5">
+                            <div class="coinDesc-co"><span>BTC</span>/USDT</div>
+                            <div class="coinDesc-de"><span>币安</span><span>成交量2,567</span></div>
+                        </div>
+                        <div class="coinPrice col-xs-3">¥75000</div>
+                        <div class="coinMarketPrice blue col-xs-4"><span>¥10879亿</span></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

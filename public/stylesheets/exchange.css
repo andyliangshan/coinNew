@@ -1,0 +1,180 @@
+@import "reset.css";
+.coinType {
+    overflow: hidden;
+    padding: 20px 15px 10px;
+    margin: 0;
+    position: relative;
+}
+
+.coinType .coinTypeNumber {
+    overflow-x: auto;
+    padding: 0;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 90%;
+}
+
+.coinType .coinTypeNumber a {
+    display: inline-block;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 9px;
+    color: #fff;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.coinType .coinTypeNumber a.active {
+    color: #f0b90b;
+    border-bottom: 3px solid #f0b90b;
+}
+
+.coinType .navheader-r {
+    line-height: 33px;
+    padding-left: 0;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    width: 10%;
+}
+
+.coinType .navheader-r a {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+
+.coinType .navheader-r a img {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+.listcont {
+    clear: both;
+    overflow: hidden;
+}
+
+.listcont table {
+    border-collapse: collapse;
+    width: 100%;
+    border: none;
+}
+
+.listcont table tr th {
+    border: none;
+    background: #282b36;
+    padding: 8px 0;
+    font-size: 13px;
+    color: #999;
+}
+
+.listcont table tr td {
+    border: none;
+}
+
+.ownlist .tableHeader {
+    padding: 8px 15px;
+    text-align: left;
+    background: #282b36;
+    margin: 0;
+}
+
+.ownlist .tableHeader>div {
+    color: #999;
+    font-size: 13px;
+    padding: 0;
+}
+
+.ownlist .tableHeader .col2 {
+    color: #999;
+}
+
+.ownlist .tableHeader .col1 em {
+    font-style: normal;
+    color: #f0b90b;
+}
+
+.ownlist .tableHeader .col1 span {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.ownlist .tableHeader .col1 span.downbtn {
+    background: url(/public/images/downBtn.png) no-repeat;
+    background-size: contain;
+    width: 8px;
+    height: 11px;
+}
+
+.ownlist .tableHeader .col1 span.upbtn {
+    background: url(/public/images/upBtn.png) no-repeat;
+    background-size: contain;
+    width: 8px;
+    height: 11px;
+}
+
+.ownlist .tableHeader .col3 {
+    text-align: right;
+}
+
+.rowlist {
+    clear: both;
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+.rowlist .rowrankData {
+    padding: 10px 0;
+    overflow: hidden;
+    border-bottom: 1px solid #20272c;
+}
+
+.rowlist .rowrankData .coinDesc .coinDesc-co {
+    font-size: 12px;
+    color: #999;
+}
+
+.rowlist .rowrankData .coinDesc .coinDesc-co span {
+    color: #fff;
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.rowlist .rowrankData .coinDesc .coinDesc-de {
+    clear: both;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.rowlist .rowrankData .coinDesc .coinDesc-de span {
+    display: inline-block;
+    color: #999;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.rowlist .rowrankData .coinPrice {
+    padding: 10px 0;
+    color: #fff;
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.rowlist .rowrankData .coinMarketPrice span {
+    display: block;
+    padding: 10px 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.rowlist .rowrankData .red span {
+    background: #9a1e1e;
+}
+
+.rowlist .rowrankData .blue span {
+    background: #4d6d0f;
+}

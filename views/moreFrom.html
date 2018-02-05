@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title><%= title%></title>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/more.css' />
+</head>
+<body>
+<div class="app">
+    <div class="backto">
+        <a href="javascript: window.history.go(-1)" class="backtoPage"></a>意见反馈
+    </div>
+    <div class="suggestbox">
+        <h1>可以在下面反馈问题给我们</h1>
+        <form class="suggestFrom" id="suggestFrom">
+            <div class="fillsuggest">
+                <textarea placeholder="请输入反馈意见..."></textarea>
+            </div>
+            <div class="weixin form-input row">
+                <label class="col-xs-3">微信号</label>
+                <input class="weixinNumer col-xs-9" placeholder="选填，便于联系您" name="weixin" />
+            </div>
+            <div class="phoneNu form-input row">
+                <label class="col-xs-3">手机号</label>
+                <input class="phoneNumber col-xs-9" placeholder="选填，便于联系您" name="phone" />
+            </div>
+            <div class="email form-input row">
+                <label class="col-xs-3">邮    &nbsp;&nbsp;箱</label>
+                <input class="emailNumber col-xs-9" placeholder="选填，便于联系您" name="email" />
+            </div>
+            <div class="submitform">
+                <a href="javascript:void(0)" class="submitBtn">提交</a>
+            </div>
+        </form>
+    </div>
+    <%- include('footer.html', {page: 'more'})%>
+</div>
+</body>
+</html>

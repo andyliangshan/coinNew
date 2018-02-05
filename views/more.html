@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title><%= title%></title>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/more.css' />
+</head>
+<body>
+<div class="app">
+    <div class="pelprofile">
+        <div class="profile-pic"><img src="/public/images/profile.png" alt=""/></div>
+        <!--登录前-->
+        <div class="pel-phone" id="loginbtn" data-toggle="modal" data-target="#login">登录</div>
+        <!--登录前-->
+    </div>
+    <div class="cont">
+        <div class="cont-message">
+            <a href="/more/form" class="messageFrom">
+                <i><img src="/public/images/instru.png" /></i>
+                <span>意见反馈</span>
+                <em><img src="/public/images/rightBtn.png" alt="" /></em>
+            </a>
+        </div>
+        <div class="cont-friend">
+            <i><img src="/public/images/about.png" /></i>
+            <span>联系我们</span>
+            <em>官方QQ群：123456789</em>
+        </div>
+    </div>
+    <!--登录前隐藏,登录后显示-->
+    <div class="logout">
+        <a href="javascript:void(0)" class="logoutBtn">退出登录</a>
+    </div>
+    <!--登录前隐藏,登录后显示-->
+    <%- include('footer.html', {page: 'more'})%>
+    <!--登录 modal-->
+    <%- include('login.html')%>
+    <script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/login.js"></script>
+</div>
+</body>
+</html>
