@@ -178,3 +178,8 @@
 .rowlist .rowrankData .blue span {
     background: #4d6d0f;
 }
+
+.rowselData {
+    height: 520px;
+    overflow-y: auto;
+}

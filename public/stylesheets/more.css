@@ -112,7 +112,6 @@
     clear: both;
     overflow: hidden;
     padding: 80px 15px;
-    display: none;
 }
 
 .logout a {
@@ -234,9 +233,53 @@
     padding: 15px 0;
 }
 
+.suggestFrom .alertDaner {
+    clear: both;
+    overflow: hidden;
+    margin: 10px 15px 0;
+    display: none;
+}
 
+.suggestFrom .alertDaner span {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
 
+#suggestSuccess {
+    background: #1e212a;
+    width: 100%;
+}
 
+#suggestSuccess .modal-dialog {
+    background: none;
+    box-shadow: none;
+    border: none;
+    margin-top: 50%;
+}
 
+#suggestSuccess .modal-dialog .modal-content {
+    background: #1e212a;
+    box-shadow: none;
+    border: none;
+}
+
+#suggestSuccess .modal-dialog .modal-header {
+    border-bottom: none;
+}
+
+#suggestSuccess .modal-dialog .close {
+    color: #999;
+    cursor: pointer;
+    opacity: 1;
+    text-shadow: none;
+}
+
+#suggestSuccess .tips {
+    padding: 20px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+}
 
 

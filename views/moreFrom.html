@@ -11,13 +11,13 @@
 <body>
 <div class="app">
     <div class="backto">
-        <a href="javascript: window.history.go(-1)" class="backtoPage"></a>意见反馈
+        <a href="javascript: void(0)" class="backtoPage"></a>意见反馈
     </div>
     <div class="suggestbox">
         <h1>可以在下面反馈问题给我们</h1>
         <form class="suggestFrom" id="suggestFrom">
             <div class="fillsuggest">
-                <textarea placeholder="请输入反馈意见..."></textarea>
+                <textarea placeholder="请输入反馈意见..." class="textarea"></textarea>
             </div>
             <div class="weixin form-input row">
                 <label class="col-xs-3">微信号</label>
@@ -31,12 +31,32 @@
                 <label class="col-xs-3">邮    &nbsp;&nbsp;箱</label>
                 <input class="emailNumber col-xs-9" placeholder="选填，便于联系您" name="email" />
             </div>
-            <div class="submitform">
+            <div class="row alertDaner"><span class="alert-danger"></span></div>
+            <div class="submitform" id="submitformMore">
                 <a href="javascript:void(0)" class="submitBtn">提交</a>
             </div>
         </form>
     </div>
     <%- include('footer.html', {page: 'more'})%>
 </div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="suggestSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="tips">提交成功</div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/more.js"></script>
 </body>
 </html>

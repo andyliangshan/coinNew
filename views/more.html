@@ -12,9 +12,15 @@
 <div class="app">
     <div class="pelprofile">
         <div class="profile-pic"><img src="/public/images/profile.png" alt=""/></div>
+        <%if(cookies.username){%>
+        <!--登录后-->
+        <div class="pel-phone" id="loginAfter"><%= cookies.username%></div>
+        <!--登录后-->
+        <%}else{%>
         <!--登录前-->
         <div class="pel-phone" id="loginbtn" data-toggle="modal" data-target="#login">登录</div>
         <!--登录前-->
+        <%}%>
     </div>
     <div class="cont">
         <div class="cont-message">
@@ -31,13 +37,16 @@
         </div>
     </div>
     <!--登录前隐藏,登录后显示-->
+    <%if(cookies.username){%>
     <div class="logout">
-        <a href="javascript:void(0)" class="logoutBtn">退出登录</a>
+        <a href="javascript:void(0)" class="logoutBtn" id="logoutBtn">退出登录</a>
     </div>
+    <%}%>
     <!--登录前隐藏,登录后显示-->
     <%- include('footer.html', {page: 'more'})%>
     <!--登录 modal-->
     <%- include('login.html')%>
+    <input type="hidden" value="<%= cookies.username%>" id="hiddenVal"/>
     <script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="/javascripts/login.js"></script>

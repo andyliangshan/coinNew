@@ -233,7 +233,7 @@ input:focus {
 #login .base .inputPhone {
     padding: 0 0 0 10px;
     font-size: 15px;
-    color: #999;
+    color: #272727;
     background: none;
     border: none;
 }
@@ -270,7 +270,7 @@ input:focus {
 #login .code .inputYzm {
     padding: 0 0 0 10px;
     font-size: 15px;
-    color: #999;
+    color: #272727;
     background: none;
     border: none;
     display: inline-block;
@@ -352,6 +352,41 @@ input:focus {
     padding: 0;
 }
 
+#loginSuccess {
+    background: #1e212a;
+    width: 100%;
+}
+
+#loginSuccess .modal-dialog {
+    background: none;
+    box-shadow: none;
+    border: none;
+    margin-top: 50%;
+}
+
+#loginSuccess .modal-dialog .modal-content {
+    background: #1e212a;
+    box-shadow: none;
+    border: none;
+}
+
+#loginSuccess .modal-dialog .modal-header {
+    border-bottom: none;
+}
+
+#loginSuccess .modal-dialog .close {
+    color: #999;
+    cursor: pointer;
+    opacity: 1;
+    text-shadow: none;
+}
+
+#loginSuccess .tips {
+    padding: 20px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+}
 /*************login css****************/
 
 /***************searchFrom css***********************/
@@ -424,7 +459,9 @@ input:focus {
 .showSearchResult ul {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    height: 500px;
+    overflow-y: auto;
 }
 
 .showSearchResult ul li {
@@ -523,11 +560,11 @@ input:focus {
 }
 
 .stage .label {
-    background: -webkit-gradient(linear, left top, right top, color-stop(0, #4d4d4d), color-stop(.4, #4d4d4d), color-stop(.5, white), color-stop(.6, #4d4d4d), color-stop(1, #4d4d4d));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-animation: slidetounlock 3s infinite;
-    -webkit-text-size-adjust: none;
+    /*background: -webkit-gradient(linear, left top, right top, color-stop(0, #4d4d4d), color-stop(.4, #4d4d4d), color-stop(.5, white), color-stop(.6, #4d4d4d), color-stop(1, #4d4d4d));*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+    /*-webkit-animation: slidetounlock 3s infinite;*/
+    /*-webkit-text-size-adjust: none;*/
     line-height: 46px;
     height: 46px;
     text-align: center;
@@ -656,4 +693,8 @@ input:focus {
     color: #fff;
     font-size: 12px;
     background: none;
+}
+
+.label.cons {
+    color: #fff;
 }

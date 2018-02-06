@@ -12,39 +12,6 @@ var label = document.querySelector('.stage .label');
 var flag = 1;
 var MOBILE_REG = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/;
 
-//设置自定义过期时间cookie
-function setCookie(name, value, time) {
-    var msec = getMsec(time); //获取毫秒
-    var exp = new Date();
-    exp.setTime(exp.getTime() + msec * 1);
-    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
-}
-//将字符串时间转换为毫秒,1秒=1000毫秒
-function getMsec(str) {
-    var timeNum = str.substring(0, str.length - 1) * 1; //时间数量
-    var timeStr = str.substring(str.length - 1, str.length); //时间单位前缀，如h表示小时
-    if (timeStr == "s") { //20s表示20秒
-        return timeNum * 1000;
-    }
-    else if (timeStr == "h") { //12h表示12小时
-        return timeNum * 60 * 60 * 1000;
-    }
-    else if (timeStr == "d") {
-        return timeNum * 24 * 60 * 60 * 1000;
-    } //30d表示30天
-}
-
-//读取cookies
-function getCookie(name) {
-    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)"); //正则匹配
-    if (arr = document.cookie.match(reg)) {
-        return unescape(arr[2]);
-    }
-    else {
-        return null;
-    }
-}
-
 oBtn.addEventListener('touchstart', function (e) {
     if (flag == 1) {
         console.log(e);
@@ -78,7 +45,7 @@ oBtn.addEventListener('touchend', function () {
         oIcon.style.display = 'none';
         oSpinner.style.display = 'block';
         label.innerHTML = '验证成功';
-        label.style.color = '#fff !important';
+        $('.stage .label').addClass('cons');
         oBtn.style.background = '#fff';
         flag = 0;
         var sendButton = $('#sendButton');
@@ -91,6 +58,13 @@ oBtn.addEventListener('touchend', function () {
     oBtn.className = "button-on";
     oTrack.className = "track-on";
 }, false);
+
+//删除cookies
+function delCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 60 * 60 * 1000);
+    document.cookie = "username=" + name + ";expires=" + exp.toGMTString() + ";path=/";
+}
 
 (function ($) {
     // 获取发送验证码地址
@@ -105,13 +79,13 @@ oBtn.addEventListener('touchend', function () {
         timeout: 2000,
         success: function (data) {
             resultCode = data.randMethod;
-            console.log(resultCode, '2122======233223');
         },
         error: function (err, data) {
             console.log(err, data.msg);
         }
     });
     // 发送验证码
+    var globalYzm = null;
     $('#sendButton').click(function (e) {
         e.preventDefault();
         var phone = $('[name="inputPhone"]').val();
@@ -123,7 +97,18 @@ oBtn.addEventListener('touchend', function () {
             setTimeout(function () {
                 alertDaner.parent().fadeOut(500);
             }, 2000);
+            return;
         }
+        var timeout = 60;
+        var ccPhone = setInterval(function () {
+            --timeout;
+            $btn.text(timeout + 's后获取');
+            if (timeout <= 0) {
+                clearInterval(ccPhone);
+                $btn.removeAttr('disabled');
+                $btn.text('获取验证码');
+            }
+        }, 1000);
         $.ajax({
             url: 'http://39.106.148.255/wechat' + resultCode,
             method: 'post',
@@ -131,22 +116,20 @@ oBtn.addEventListener('touchend', function () {
             data: {
                 mobilePhone: phone,
             },
-            dataType: 'json',
+            dataType: 'jsonp',
             timeout: 2000,
+            jsonp: 'jsonpCall',
             success: function (data) {
-                if (data.success === 1000) {
-                    var timeout = 60;
-                    var ccPhone = setInterval(function () {
-                        --timeout;
-                        $btn.text(timeout + 's后获取');
-                        if (timeout <= 0) {
-                            clearInterval(ccPhone);
-                            $btn.removeAttr('disabled');
-                            $btn.text('发送验证码');
-                        }
-                    }, 1000);
+                console.log(JSON.stringify(data), '--------------------');
+                if (data.success !== 1000) {
+                    alertDaner.parent().fadeIn(500);
+                    alertDaner.text(data.msg);
+                    setTimeout(function () {
+                        alertDaner.parent().fadeOut(500);
+                    }, 2000);
+                    return;
                 }
-                console.log(data.success, '======');
+                globalYzm = data.success;
             },
             error: function (err, data) {
                 $btn.removeAttr('disabled', 'disabled');
@@ -168,6 +151,7 @@ oBtn.addEventListener('touchend', function () {
             setTimeout(function () {
                 alertDaner.parent().fadeOut(500);
             }, 2000);
+            return;
         }
         if (!inputYzm && inputYzm.length !== 4) {
             alertDaner.parent().fadeIn(500);
@@ -175,6 +159,7 @@ oBtn.addEventListener('touchend', function () {
             setTimeout(function () {
                 alertDaner.parent().fadeOut(500);
             }, 2000);
+            return;
         }
         //防止重复提交表单
         var $self = $(this);
@@ -201,15 +186,50 @@ oBtn.addEventListener('touchend', function () {
             jsonp: 'jsonpCall',
             timeout: 2000,
             success: function (data) {
+                console.log(data);
                 removeClick($self);
-                console.log(data.success);
+                if (globalYzm === 1000 && data.success === 1000) {
+                    $('#login').modal('hide');
+                    $('#loginSuccess').modal('show');
+                    document.cookie = "username=" + data.base_info.userName;
+                    location.reload();
+                } else {
+                    alertDaner.parent().fadeIn(500);
+                    alertDaner.text('别闹，验证码输错了');
+                    setTimeout(function () {
+                        alertDaner.parent().fadeOut(500);
+                    }, 2000);
+                    return false;
+                }
             },
             error: function (err, data) {
                 removeClick($self);
                 console.log(err, data.msg);
             }
         });
-
     });
 
+    // 退出登录
+    var resetName = $('#hiddenVal').val();
+    $('#logoutBtn').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'http://39.106.148.255/wechat/shop/login/out',
+            method: 'post',
+            data: null,
+            async: false,
+            dataType: 'jsonp',
+            jsonp: 'jsonpCall',
+            timeout: 2000,
+            success: function (data) {
+                console.log(data);
+                if (data.success === 1000) {
+                    delCookie(resetName);
+                }
+            },
+            error: function (err, data) {
+                console.log(err, data.msg);
+            }
+        });
+    });
 })(jQuery);

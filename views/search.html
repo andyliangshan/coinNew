@@ -13,11 +13,10 @@
     <div class="resultSearch">
         <form class="resultList" id="resultList">
             <div class="search-key row">
-                <div class="inputkey col-xs-10">
-                    <input name="inputkey" type="text" placeholder="" class="inputKeyName" id="inputKeyName"/>
-                    <span><img src="/public/images/searchBtnCancel.png" alt=""/></span>
+                <div class="inputkey col-xs-12">
+                    <input name="inputkey" type="text" placeholder="" class="inputKeyName" id="scourceKey" disabled="disabled"/>
+                    <span><img src="/public/images/searchBtn.png" alt=""/></span>
                 </div>
-                <div class="cancelSearch col-xs-2">取消</div>
             </div>
             <div class="listCoin">
                 <div class="tableHeader row">
@@ -25,27 +24,31 @@
                     <div class="col-xs-3 col2">最新价</div>
                     <div class="col-xs-4 col3">涨跌</div>
                 </div>
-                <div class="rowlist">
+                <div class="rowlist searchresult" id="searchResultList">
+                    <%if(searchDetailData){%>
+                    <%var pagedataArray = searchDetailData.pagedata%>
+                    <%for(var i = 0; i < pagedataArray.length; i++){%>
+                    <%var zbLish = pagedataArray[i].zb%>
                     <div class="rowrankData row">
                         <div class="coinDesc col-xs-5">
-                            <div class="coinDesc-co"><span>BTC</span>/USDT</div>
-                            <div class="coinDesc-de"><span>币安</span><span>成交量2,567</span></div>
+                            <div class="coinDesc-co"><span><%= pagedataArray[i].trade_name%></span></div>
+                            <div class="coinDesc-de"><span><%= pagedataArray[i].bourse_name%></span><span>成交量<%= pagedataArray[i].cjl%></span></div>
                         </div>
-                        <div class="coinPrice col-xs-3">¥150000</div>
-                        <div class="coinMarketPrice red col-xs-4"><span>¥179亿</span></div>
+                        <div class="coinPrice col-xs-3"><%= pagedataArray[i].jg_usd%></div>
+                        <div class="coinMarketPrice <%if(zbLish >= 0){%>red<%}else{%>blue<%}%> col-xs-4"><span><%=pagedataArray[i].zb%>%</span></div>
                     </div>
-                    <div class="rowrankData row">
-                        <div class="coinDesc col-xs-5">
-                            <div class="coinDesc-co"><span>BTC</span>/USDT</div>
-                            <div class="coinDesc-de"><span>币安</span><span>成交量2,567</span></div>
-                        </div>
-                        <div class="coinPrice col-xs-3">¥75000</div>
-                        <div class="coinMarketPrice blue col-xs-4"><span>¥10879亿</span></div>
-                    </div>
+                    <%}%>
+                    <%}%>
                 </div>
             </div>
         </form>
     </div>
 </div>
+<!--交易对增删改查 modal-->
+<%- include('exchangeProgram.html')%>
+<script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/search.js"></script>
+<script type="text/javascript" src="/javascripts/searchDetail.js"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
                 </li>
             </ul>
         </div>
-        <div class="navheader-r col-xs-3"><a href="javascript:void(0)" data-toggle="modal" data-target="#searchFrom"><img src="/public/images/searchBtn.png" alt="" /></a></div>
+        <div class="navheader-r col-xs-3"><a href="/search"><img src="/public/images/searchBtn.png" alt="" /></a></div>
     </div>
     <div class="listcont tab-content">
         <div class="ownlist tab-pane active" id="ownlist" role="tabpanel">
@@ -72,14 +72,10 @@
 
   <%- include('footer.html', {page: 'list'})%>
   </div>
-  <!--搜索 modal-->
-  <%- include('searchFrom.html')%>
   <!--交易对增删改查 modal-->
   <%- include('exchangeProgram.html')%>
   <script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
   <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/javascripts/bootstrap-table.js"></script>
-  <script type="text/javascript" src="/javascripts/bootstrap-table-zh-CN.js"></script>
   <script type="text/javascript" src="/javascripts/list.js"></script>
   </body>
 </html>

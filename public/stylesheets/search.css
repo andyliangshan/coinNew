@@ -23,6 +23,7 @@
     color: #fff;
     border: none;
     background: none;
+    padding-left: 25px;
 }
 
 .resultList .inputkey span {
@@ -30,7 +31,7 @@
     width: 17px;
     height: 17px;
     top: 13px;
-    right: 10px;
+    left: 10px;
 }
 
 .resultList .inputkey span img {
@@ -149,4 +150,9 @@
 
 .rowlist .rowrankData .blue span {
     background: #4d6d0f;
+}
+
+.searchresult {
+    height: 540px;
+    overflow-y: auto;
 }

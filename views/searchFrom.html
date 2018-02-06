@@ -1,28 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title><%= title%></title>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/exchange.css' />
+</head>
+<body>
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="searchFrom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade in" id="searchFrom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <form class="searchbox" id="search">
                     <div class="search-key row">
                         <div class="inputkey col-xs-10">
-                            <input name="inputkey" type="text" placeholder="" class="inputKeyName" id="inputKeyName"/>
+                            <input name="inputkey" type="text" placeholder="" class="inputKeyName" id="inputKeyName" autofocus="autofocus" />
                             <span><img src="/public/images/searchBtnCancel.png" alt=""/></span>
                         </div>
                         <div class="cancelSearch col-xs-2">取消</div>
                     </div>
                     <div class="showSearchResult">
-                        <ul id="showSearchResult">
-                            <li><a href="/search" class="coinCont">EOS</a></li>
-                            <li><a href="/search" class="coinCont">EOS/TOL</a></li>
-                            <li><a href="/search" class="coinCont">TOL</a></li>
-                            <li><a href="/search" class="coinCont">OELSL</a></li>
-                            <li><a href="/search" class="coinCont">BESL</a></li>
-                            <li><a href="/search" class="coinCont">STOL</a></li>
-                        </ul>
+                        <ul id="showSearchResult"></ul>
                     </div>
                 </form>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/search.js"></script>
+</body>
+</html>

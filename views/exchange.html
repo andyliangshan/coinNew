@@ -12,12 +12,12 @@
 <div class="app">
     <div class="coinType">
         <div class="coinTypeNumber">
-            <%var coinType = coinType.pagedata%>
-            <%for(var i = 0, len = coinType.length; i < len; i++){%>
-            <a href="javascript:void(0)" class="coinaa <%if(i === 0){%>active<%}%>"><%= coinType[i].bourse_name%></a>
+            <%for(var i = 0, len = coinNewType.length; i < len; i++){%>
+            <a href="javascript:void(0)"
+               class="coinaa <%if(coinNewType[i].bourse_name === tradeName){%>active<%}%>"><%= coinNewType[i].bourse_name%></a>
             <%}%>
         </div>
-        <div class="navheader-r"><a href="javascript:void(0)" data-toggle="modal" data-target="#searchFrom"><img src="/public/images/searchBtn.png" alt="" /></a></div>
+        <div class="navheader-r"><a href="/search"><img src="/public/images/searchBtn.png" alt="" /></a></div>
     </div>
     <div class="listcont">
         <div class="ownlist">
@@ -26,33 +26,30 @@
                 <div class="col-xs-3 col2">最新价</div>
                 <div class="col-xs-4 col3">涨跌</div>
             </div>
-            <div class="rowlist">
+            <div class="rowlist rowselData">
+                <%if(selData){%>
+                <%var seldata = selData.pagedata%>
+                <%for(var i = 0, len = seldata.length; i < len; i++){%>
+                <%var zds = seldata[i].zb%>
                 <div class="rowrankData row" data-toggle="modal" data-target="#checkprogram">
                     <div class="coinDesc col-xs-5">
-                        <div class="coinDesc-co"><span>BTC</span>/USDT</div>
-                        <div class="coinDesc-de"><span>币安</span><span>成交量2,567</span></div>
+                        <div class="coinDesc-co"><span><%= seldata[i].trade_name%></span></div>
+                        <div class="coinDesc-de"><span><%= seldata[i].bourse_name%></span><span>成交量<%= seldata[i].cjl%></span></div>
                     </div>
-                    <div class="coinPrice col-xs-3">¥150000</div>
-                    <div class="coinMarketPrice red col-xs-4"><span>+1.98%</span></div>
+                    <div class="coinPrice col-xs-3"><%= seldata[i].jg_usd%></div>
+                    <div class="coinMarketPrice <%if(zds >= 0){%>red<%}else{%>blue<%}%> col-xs-4"><span><%=seldata[i].zb%>%</span></div>
                 </div>
-                <div class="rowrankData row">
-                    <div class="coinDesc col-xs-5">
-                        <div class="coinDesc-co"><span>BTC</span>/USDT</div>
-                        <div class="coinDesc-de"><span>币安</span><span>成交量2,567</span></div>
-                    </div>
-                    <div class="coinPrice col-xs-3">¥75000</div>
-                    <div class="coinMarketPrice blue col-xs-4"><span>-11.05%</span></div>
-                </div>
+                <%}%>
+                <%}%>
             </div>
         </div>
     </div>
     <%- include('footer.html', {page: 'exchange'})%>
-    <!--搜索 modal-->
-    <%- include('searchFrom.html')%>
     <!--交易对增删改查 modal-->
     <%- include('exchangeProgram.html')%>
     <script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/exchange.js"></script>
 </div>
 </body>
 </html>
