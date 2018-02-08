@@ -698,3 +698,7 @@ input:focus {
 .label.cons {
     color: #fff;
 }
+
+button:focus {
+    outline: none;
+}

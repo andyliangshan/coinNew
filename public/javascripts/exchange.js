@@ -32,7 +32,7 @@
     // 增加自选
     modalId.find('.deleteCoin').click(function (e) {
         e.preventDefault();
-        var H5Cookie = getCookie('H5_COOKIE_STG');
+        var H5Cookie = getCookie('H5COOKIE_SIGLE');
         if (!H5Cookie) {
             location.href = '/more';
             return;

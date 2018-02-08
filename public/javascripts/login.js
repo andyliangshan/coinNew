@@ -74,7 +74,7 @@ function getCookie(name) {
 function delCookie(name) {
     var exp = new Date();
     exp.setTime(exp.getTime() - 60 * 60 * 1000);
-    document.cookie = "H5_COOKIE_STG=" + name + ";expires=" + exp.toGMTString() + ";path=/";
+    document.cookie = "H5COOKIE_SIGLE=" + name + ";expires=" + exp.toGMTString() + ";path=/";
 }
 
 (function ($) {
@@ -149,11 +149,6 @@ function delCookie(name) {
         });
     });
 
-    // var H5Cookie = getCookie('H5_COOKIE_STG');
-    // if (!H5Cookie) {
-    //     location.href = '/more';
-    //     return;
-    // }
     // 登录提交表单
     $('#loginButton').click(function (e) {
         e.preventDefault();
@@ -206,6 +201,8 @@ function delCookie(name) {
                 if (globalYzm === 1000 && data.success === 1000) {
                     $('#login').modal('hide');
                     $('#loginSuccess').modal('show');
+                    $('#loginAfter').text(data.base_info.userName);
+                    document.cookie = 'H5COOKIE_SIGLE=' + JSON.stringify(data);
                     location.reload();
                 } else {
                     alertDaner.parent().fadeIn(500);
@@ -224,11 +221,11 @@ function delCookie(name) {
     });
 
     // 退出登录
-    var resetName = $('#hiddenVal').val();
     $('#logoutBtn').click(function (e) {
         e.preventDefault();
+        delCookie('H5COOKIE_SIGLE');
         $.ajax({
-            url: 'http://39.106.148.255/wechat/shop/login/out',
+            url: 'http://39.106.148.255/wechat/login/out',
             method: 'post',
             data: null,
             async: false,
@@ -237,8 +234,9 @@ function delCookie(name) {
             timeout: 2000,
             success: function (data) {
                 console.log(data);
+                location.reload();
                 if (data.success === 1000) {
-                    delCookie(resetName);
+                    location.reload();
                 }
             },
             error: function (err, data) {

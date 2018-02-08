@@ -12,9 +12,9 @@
 <div class="app">
     <div class="pelprofile">
         <div class="profile-pic"><img src="/public/images/profile.png" alt=""/></div>
-        <%if(cookies.H5_COOKIE_STG){%>
+        <%if(cookies.cookie){%>
         <!--登录后-->
-        <div class="pel-phone" id="loginAfter"><%= cookies.H5_COOKIE_STG%></div>
+        <div class="pel-phone" id="loginAfter"><%= cookies.base_info.userName%></div>
         <!--登录后-->
         <%}else{%>
         <!--登录前-->
@@ -37,7 +37,7 @@
         </div>
     </div>
     <!--登录前隐藏,登录后显示-->
-    <%if(cookies.H5_COOKIE_STG){%>
+    <%if(cookies.cookie){%>
     <div class="logout">
         <a href="javascript:void(0)" class="logoutBtn" id="logoutBtn">退出登录</a>
     </div>
@@ -46,7 +46,6 @@
     <%- include('footer.html', {page: 'more'})%>
     <!--登录 modal-->
     <%- include('login.html')%>
-    <input type="hidden" value="<%= cookies.username%>" id="hiddenVal"/>
     <script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.cookie.js"></script>

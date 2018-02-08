@@ -11,11 +11,12 @@
 <body>
 <div class="app">
     <div class="detailInfo">
+        <%if(singleDetailData){%>
         <div class="detailInfo-top row">
             <div class="detailInfo-top-logo col-xs-2"><img src="/public/images/programSecond.png"  alt=""/></div>
             <div class="detailInfo-top-coin col-xs-2">
-                <span class="fontWhite">BTC</span>
-                <span>比特币</span>
+                <span class="fontWhite"><%= singleDetailData.detail.nameEn || ''%></span>
+                <span><%= singleDetailData.detail.name || ''%></span>
             </div>
             <div class="detailInfo-top-commit col-xs-5">
                 <span class="fontWhite">10960</span>
@@ -24,13 +25,14 @@
             <div class="detailInfo-top-more col-xs-2"><a href="/detail/detailSecond">更多&gt;</a></div>
         </div>
         <div class="detailInfo-bot row">
-            <div class="col-xs-6 ICO-time"><span class="fontWhite">ICO时间</span><span>2017-12-18</span></div>
-            <div class="col-xs-6 ICO-average"><span class="fontWhite">ICO均价</span><span>¥0.01</span></div>
-            <div class="col-xs-6 ICO-storeTime"><span class="fontWhite">上架时间</span><span>2018-01-18</span></div>
-            <div class="col-xs-6 ICO-publishPrice"><span class="fontWhite">发行价格</span><span>¥0.02</span></div>
+            <div class="col-xs-6 ICO-time"><span class="fontWhite">ICO时间</span><span><%=singleDetailData.detail.zcqssj || ''%></span></div>
+            <div class="col-xs-6 ICO-average"><span class="fontWhite">ICO均价</span><span><%= singleDetailData.detail.zcjj || ''%></span></div>
+            <div class="col-xs-6 ICO-storeTime"><span class="fontWhite">上架时间</span><span><%= singleDetailData.detail.fxsj || ''%></span></div>
+            <div class="col-xs-6 ICO-publishPrice"><span class="fontWhite">发行价格</span><span><%= singleDetailData.detail.jg || ''%></span></div>
             <div class="col-xs-12 ICO-tag"><span>平台币</span><span>物联网</span><span>数据存储</span></div>
         </div>
         <div class="secondDetail"><a href="/detail/detailSecond"></a></div>
+        <%}%>
     </div>
     <div class="listcont">
         <div class="ownlist">

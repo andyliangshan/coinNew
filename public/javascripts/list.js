@@ -123,15 +123,17 @@ $(function () {
     var modalId = $('#checkprogram');
     modalId.find('.deleteCoin').click(function (e) {
         e.preventDefault();
-        // var H5Cookie = getCookie('H5_COOKIE_STG');
-        // if (!H5Cookie) {
-        //     location.href = '/more';
-        //     return;
-        // }
+        var H5Cookie = JSON.parse(getCookie('H5COOKIE_SIGLE'));
+        console.log(H5Cookie);
+        if (!H5Cookie.cookie) {
+            location.href = '/more';
+            return;
+        }
         $.ajax({
             url: 'http://39.106.148.255/wechat/attent/add',
             method: 'post',
             data: {
+                name: H5Cookie.base_info.userName,
                 bourse_name: tradeName,
                 trade_name: coinDescCo
             },
@@ -141,11 +143,11 @@ $(function () {
             timeout: 2000,
             success: function (data) {
                 console.log(data);
-                if (data.success === 3000) {
-                    alert('请登录');
-                    location.href = '/more';
-                    return;
-                }
+                // if (data.success === 3000) {
+                //     alert('请登录');
+                //     location.href = '/more';
+                //     return;
+                // }
                 modalId.find('.deleteCoin a').text('删除自选');
             },
             error: function (err, data) {
