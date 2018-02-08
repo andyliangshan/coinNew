@@ -13,10 +13,10 @@
     <div class="navheader row">
         <div class="navheader-l col-xs-9">
             <ul class="nav nav-tabs row" role="tablist">
-                <li role="presentation" class="active col-xs-6">
+                <li role="presentation" class="active col-xs-6 ownlist">
                     <a href="#ownlist" aria-controls="ownlist" role="tab" data-toggle="tab">我的自选</a>
                 </li>
-                <li role="presentation" class="col-xs-6">
+                <li role="presentation" class="col-xs-6 myprogramlist">
                     <a href="#programlist" aria-controls="programlist" role="tab" data-toggle="tab">项目大全</a>
                 </li>
             </ul>
@@ -27,22 +27,14 @@
         <div class="ownlist tab-pane active" id="ownlist" role="tabpanel">
             <div class="tableHeader row">
                 <div class="col-xs-5 col1">交易对/成交量</div>
-                <div class="col-xs-3 col2">最新价<span class="downbtn"></span></div>
+                <div class="col-xs-3 col2" id="newprice">最新价<span class="upbtn"></span></div>
                 <div class="col-xs-4 col3">市值</div>
             </div>
-            <div class="rowlist">
-                <%var coinBase = coinData.pagedata%>
-                <%for(var i = 0, len = coinBase.length; i < len; i++){%>
-                <%var bizf = coinBase[i].ltsz_usd%>
-                <div class="rowrankData row" data-toggle="modal" data-target="#checkprogram">
-                    <div class="coinDesc col-xs-5">
-                        <div class="coinDesc-co"><span><%= coinBase[i].name%></span>/U</div>
-                        <div class="coinDesc-de"><span>币安</span><span>成交量<%= coinBase[i].cje_usd%></span></div>
-                    </div>
-                    <div class="coinPrice col-xs-3"><%= coinBase[i].jg_usd%></div>
-                    <div class="coinMarketPrice col-xs-4  <%if(parseInt(bizf) >= 650){%>red<%}else{%>blue<%}%>"><span><%= coinBase[i].ltsz_usd/10000%>万</span></div>
+            <div id="wrapper">
+                <div id="myScrollbar">
+                    <div class="rowlist" id="data1"></div>
+                    <div class="pullUp"></div>
                 </div>
-                <%}%>
             </div>
         </div>
         <div class="programlist tab-pane" id="programlist" role="tabpanel">
@@ -50,22 +42,13 @@
                 <div class="col-xs-2 col1">#</div>
                 <div class="col-xs-4 col2">项目/成交量</div>
                 <div class="col-xs-3 col3">最新价</div>
-                <div class="col-xs-3 col4">涨跌<span class="upbtn"></span></div>
+                <div class="col-xs-3 col4" id="priceBif">涨跌<span class="upbtn"></span></div>
             </div>
-            <div class="rowlist">
-                <%var thisBase = coinData.pagedata%>
-                <%for(var j = 0, len = thisBase.length; j < len; j++){%>
-                <%var bizf = coinBase[j].biZf%>
-                <div class="rowrankData row">
-                    <div class="col-xs-2 number"><%= coinBase[j].ordernum%></div>
-                    <div class="coinDesc col-xs-4">
-                        <div class="coinDesc-l"><img src="<%= coinBase[j].image_url%>" alt=""/></div>
-                        <div class="coinDesc-r"><span class="fonts"><%= coinBase[j].name%></span><span>成交量<%=coinBase[j].cje_usd%></span></div>
-                    </div>
-                    <div class="coinPrice col-xs-3"><%= coinBase[j].jg_usd%></div>
-                    <div class="coinMarketPrice col-xs-3 <%if(bizf >= 0){%>red<%}else{%>blue<%}%>"><span><%=coinBase[j].biZf%>%</span></div>
+            <div id="wrapper1">
+                <div id="myScrollbar1">
+                    <div class="rowlist" id="data2"></div>
+                    <div class="pullUp"></div>
                 </div>
-                <%}%>
             </div>
         </div>
     </div>
@@ -76,6 +59,7 @@
   <%- include('exchangeProgram.html')%>
   <script type="text/javascript" src="/javascripts/jquery-1.12.4.min.js"></script>
   <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.js"></script>
   <script type="text/javascript" src="/javascripts/list.js"></script>
   </body>
 </html>

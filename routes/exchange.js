@@ -11,7 +11,7 @@ const urls = {
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   try {
-    var tradeName;
+    let tradeName;
     if (req.query.tradeName) {
       tradeName = req.query.tradeName;
     } else {
@@ -33,7 +33,6 @@ router.get('/', async function(req, res, next) {
     };
     const coinNewType = resetSubNav(str = tradeName);
     const selData = await request.get(urls.selApi, { currentPageForApp: 1, showCount: 10, bourseName: tradeName, orderField: 'jg_usd', orderType: 'ASC' }, true);
-
     res.render('exchange', {
       title: '币格交易助手',
       selData,

@@ -59,11 +59,22 @@ oBtn.addEventListener('touchend', function () {
     oTrack.className = "track-on";
 }, false);
 
+//读取cookies
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)"); //正则匹配
+    if (arr = document.cookie.match(reg)) {
+        return unescape(arr[2]);
+    }
+    else {
+        return null;
+    }
+}
+
 //删除cookies
 function delCookie(name) {
     var exp = new Date();
     exp.setTime(exp.getTime() - 60 * 60 * 1000);
-    document.cookie = "username=" + name + ";expires=" + exp.toGMTString() + ";path=/";
+    document.cookie = "H5_COOKIE_STG=" + name + ";expires=" + exp.toGMTString() + ";path=/";
 }
 
 (function ($) {
@@ -138,7 +149,11 @@ function delCookie(name) {
         });
     });
 
-
+    // var H5Cookie = getCookie('H5_COOKIE_STG');
+    // if (!H5Cookie) {
+    //     location.href = '/more';
+    //     return;
+    // }
     // 登录提交表单
     $('#loginButton').click(function (e) {
         e.preventDefault();
@@ -191,7 +206,6 @@ function delCookie(name) {
                 if (globalYzm === 1000 && data.success === 1000) {
                     $('#login').modal('hide');
                     $('#loginSuccess').modal('show');
-                    document.cookie = "username=" + data.base_info.userName;
                     location.reload();
                 } else {
                     alertDaner.parent().fadeIn(500);

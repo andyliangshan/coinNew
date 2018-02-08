@@ -31,7 +31,7 @@
                 <%var seldata = selData.pagedata%>
                 <%for(var i = 0, len = seldata.length; i < len; i++){%>
                 <%var zds = seldata[i].zb%>
-                <div class="rowrankData row" data-toggle="modal" data-target="#checkprogram">
+                <div class="rowrankData row" data-toggle="modal" data-target="#checkprogram" data-name="<%= seldata[i].name%>">
                     <div class="coinDesc col-xs-5">
                         <div class="coinDesc-co"><span><%= seldata[i].trade_name%></span></div>
                         <div class="coinDesc-de"><span><%= seldata[i].bourse_name%></span><span>成交量<%= seldata[i].cjl%></span></div>
