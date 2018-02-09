@@ -4,10 +4,10 @@
       "name": "coinNew",
       "script": "./bin/www",
       "log_date_format": "YYYY-MM-DD HH:mm:SS",
-      "log_file": "logs/app1.log",
-      "error_file": "logs/app1-err.log",
-      "out_file": "logs/app1-out.log",
-      "pid_file": "logs/app1.pid",
+      "log_file": "logs/coinNew.log",
+      "error_file": "logs/coinNew-err.log",
+      "out_file": "logs/coinNew-out.log",
+      "pid_file": "logs/coinNew.pid",
       "exec_mode": "cluster_mode",
       "watch": true
     }
