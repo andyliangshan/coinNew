@@ -19,8 +19,8 @@
     // 反馈建议表单提交
     $('#submitformMore').click(function (e) {
         e.preventDefault();
-        var username = getCookie('username');
-        if (username) {
+        var H5Cookie = JSON.parse(getCookie('H5COOKIE_SIGLE'));
+        if (H5Cookie.cookie) {
             var textarea = $('.textarea').val();
             var phone = $('[name="phone"]').val();
             var email = $('[name="email"]').val();
