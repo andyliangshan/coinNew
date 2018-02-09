@@ -16,6 +16,23 @@ function getCookie(name) {
         return null;
     }
 }
+
+// 截取字符串每隔四位
+function formatNum(str) {
+    var newStr = parseInt(str).toString();
+    if (newStr.length > 4 && newStr.length < 9) {
+        return newStr.substring(-1, (newStr.length - 4)) + '万';
+    } else if (newStr.length >= 9) {
+        return newStr.substring(-1, (newStr.length - 8)) + '亿';
+    } else {
+        return newStr;
+    }
+}
+// 保留两位小数
+function fomatFloat(src, pos) {
+    return Math.round(src * Math.pow(10, pos)) / Math.pow(10, pos);
+}
+
 $(function () {
     // 点击最新价排序
     var globalNewPriceIndex = sessionStorage.getItem('globalNewPriceIndex');
@@ -156,8 +173,6 @@ $(function () {
         });
     });
 
-
-
 });
 var showCount = 10;
 var orderType = window.location.search.split('=')[1];
@@ -168,20 +183,21 @@ function listconent(coinBase) {
     var bizf = parseInt(coinBase.ltsz_usd) >= 650 ? 'red' : 'blue';
     return '<div class="rowrankData row" data-toggle="modal" data-target="#checkprogram"> ' +
         '<div class="coinDesc col-xs-5"> ' +
-        '<div class="coinDesc-co"><span>' + coinBase.name_zh.split('-')[0] + '</span>/U</div> ' +
-        '<div class="coinDesc-de"><span>币安</span><span>成交量' + coinBase.cje_usd + '</span></div> ' +
-        '</div> <div class="coinPrice col-xs-3">' + coinBase.jg_usd + '</div> ' +
-        '<div class="coinMarketPrice col-xs-4  ' + bizf +'"><span>' + parseInt(coinBase.ltsz_usd/10000) + '万</span></div> ' +
+        '<div class="coinDesc-co"><span>' + coinBase.name_zh.split('-')[0] + '</span>' + (coinBase.name_zh.split('-')[1] ? ('/' + coinBase.name_zh.split('-')[1]) : '') + '</div> ' +
+        '<div class="coinDesc-de"><span>' + coinBase.name + '</span><span>成交量' + formatNum(coinBase.cje_cny) + '</span></div> ' +
+        '</div> <div class="coinPrice col-xs-3">¥' + fomatFloat(coinBase.jg_cny, 2) + '</div> ' +
+        '<div class="coinMarketPrice col-xs-4  ' + bizf +'"><span>' + formatNum(coinBase.jg_cny) + '</span></div> ' +
         '</div>';
 }
 function listconentProgram(coinBase) {
     var bizf = coinBase.biZf >= 0 ? 'red' : 'blue';
     return '<div class="rowrankData row" data-toggle="modal" data-target="#checkprogram"> ' +
-        '<div class="coinDesc col-xs-5"> ' +
-        '<div class="coinDesc-co"><span>' + coinBase.name_zh.split('-')[0] + '</span>/U</div> ' +
-        '<div class="coinDesc-de"><span>币安</span><span>成交量' + coinBase.cje_usd + '</span></div> ' +
-        '</div> <div class="coinPrice col-xs-3">' + coinBase.jg_usd + '</div> ' +
-        '<div class="coinMarketPrice col-xs-4  ' + bizf +'"><span>' + coinBase.biZf + '%</span></div> ' +
+        '<div class="coinDesc-rank col-xs-2">' + coinBase.ordernum + '</div> ' +
+        '<div class="coinDesc col-xs-4"> ' +
+        '<div class="coinDesc-co"><span>' + coinBase.name_zh.split('-')[0] + '</span>' + (coinBase.name_zh.split('-')[1] ? ('/' + coinBase.name_zh.split('-')[1]) : '') + '</div> ' +
+        '<div class="coinDesc-de"><span>' + coinBase.name + '</span><span>成交量¥' + formatNum(coinBase.cje_cny) + '</span></div> ' +
+        '</div> <div class="coinPrice col-xs-3">¥' + fomatFloat(coinBase.jg_cny, 2) + '</div> ' +
+        '<div class="coinMarketPrice col-xs-3  ' + bizf +'"><span>' + fomatFloat(coinBase.biZf, 2) + '%</span></div> ' +
         '</div>';
 }
 /**
@@ -271,16 +287,17 @@ $(function () {
     var timer = null;
     var wrapper = $('#wrapper1');
     var pullUp = $("#myScrollbar1 .pullUp");
+    var pageNum = 10;
     wrapper.on('touchmove', function () {
         var scrollH = $(document).height();
         h = scrollH - $(this).scrollTop();
         if (clientH >= h) {
             pullUp.show();
             timer = setTimeout(function () {
-                pullUp.html("松开加载");
+                pullUp.html("");
             }, 1000);
         } else if (clientH >= h - $(".more").height()) {
-            pullUp.html("加载更多");
+            pullUp.html("");
             pullUp.hide();
         }
     });
@@ -288,29 +305,30 @@ $(function () {
     var startTime, endTime;
     wrapper.on('touchstart', function (event) {
         startTime = new Date().getTime();
-        pullUp.html("加载更多");
+        pullUp.html("");
     });
     wrapper.on('touchend', function (event) {
         h = $(document).height() - $(window).scrollTop();
-        pullUpActionProgram();
         if (clientH >= h) {
             endTime = new Date().getTime();
-            if (endTime - startTime > 500) {
+            if (endTime - startTime > 1000) {
+                pageNum += 10;
+                pullUpActionProgram(pageNum);
                 pullUp.show();
-                pullUp.html("加载中...");
+                pullUp.html("");
             } else {
                 clearTimeout(timer);
-                pullUp.html("加载更多");
+                pullUp.html("");
                 pullUp.hide();
             }
         } else {
             clearTimeout(timer);
-            pullUp.html("加载更多");
+            pullUp.html("");
             pullUp.hide();
         }
     });
 });
-function pullUpActionProgram() {
+function pullUpActionProgram(showCountProgram = 10) {
     setTimeout(function () {
         $.ajax({
             url: 'http://39.106.148.255/wechat/often/data/list/?',
@@ -333,7 +351,6 @@ function pullUpActionProgram() {
                     }
                     $('#data2').append(newstrProgram);
                 }
-                showCountProgram += 10;
             },
             error: function (err, data) {
                 console.log(err, data.msg);
@@ -343,13 +360,13 @@ function pullUpActionProgram() {
 }
 
 $(function () {
-    // 点击交易对的时候数据的添加
-    var modalId = $('#checkprogram');
-    var coinDescCo, coinDescDe;
-    $('.rowlist').delegate('.rowrankData', 'click',function () {
-        coinDescCo = $(this).find('.coinDesc-co span').text().trim();
-        coinDescDe = $(this).find('.coinDesc-de span:eq(0)').text().trim();
-        modalId.find('.checkCoin a').text(coinDescCo + ' ' + coinDescDe);
-    });
+    // // 点击交易对的时候数据的添加
+    // var modalId = $('#checkprogram');
+    // var coinDescCo, coinDescDe;
+    // $('.rowlist').delegate('.rowrankData', 'click',function () {
+    //     coinDescCo = $(this).find('.coinDesc-co span').text().trim();
+    //     coinDescDe = $(this).find('.coinDesc-de span:eq(0)').text().trim();
+    //     modalId.find('.checkCoin a').text(coinDescCo + ' ' + coinDescDe);
+    // });
 
 });

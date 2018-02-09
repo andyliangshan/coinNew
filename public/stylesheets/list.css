@@ -179,6 +179,10 @@
     font-weight: bolder;
 }
 
+.rowlist .rowrankData .coinDesc-rank {
+    padding: 0;
+}
+
 .rowlist .rowrankData .coinMarketPrice {
     padding: 0;
 }
