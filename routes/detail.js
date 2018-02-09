@@ -7,9 +7,7 @@ var request = require('../api/request');
 router.get('/', async function(req, res, next) {
   try {
     var name = req.query.tradeName;
-    var singleDetailData = await request.get('http://39.106.148.255/wechat/often/data/detail',
-        { name: name }, true);
-    console.log(singleDetailData);
+    var singleDetailData = await request.get('http://39.106.148.255/wechat/often/data/detail', { name: name }, true) || '';
     res.render('detail', {
       title: '币格交易助手',
       singleDetailData

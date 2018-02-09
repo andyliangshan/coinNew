@@ -11,12 +11,12 @@
 <body>
 <div class="app">
     <div class="detailInfo">
-        <%if(singleDetailData){%>
+        <%if(singleDetailData.detail){%>
         <div class="detailInfo-top row">
             <div class="detailInfo-top-logo col-xs-2"><img src="/public/images/programSecond.png"  alt=""/></div>
             <div class="detailInfo-top-coin col-xs-2">
-                <span class="fontWhite"><%= singleDetailData.detail.nameEn || ''%></span>
-                <span><%= singleDetailData.detail.name || ''%></span>
+                <span class="fontWhite"><%=(singleDetailData.detail ?singleDetailData.detail.split('/')[1] : '')%></span>
+                <span><%=(singleDetailData.detail ?singleDetailData.detail.split('/')[0] : '')%></span>
             </div>
             <div class="detailInfo-top-commit col-xs-5">
                 <span class="fontWhite">10960</span>
